@@ -12,8 +12,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
+  flutter_launcher_icons: ^0.14.4
   flutter_localizations:
     sdk: flutter
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  lottie: ^3.2.0
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +35,9 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/lottie/splash.json
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/AppIcons/appstore.png"

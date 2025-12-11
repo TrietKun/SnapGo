@@ -1,20 +1,71 @@
 import 'package:flutter/material.dart';
-
-import 'src/app.dart';
-import 'src/settings/settings_controller.dart';
-import 'src/settings/settings_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:snapgo/blocs/settings/settings_bloc.dart';
+import 'package:snapgo/core/constants/app_theme.dart';
+import 'package:snapgo/routes/app_routes.dart';
 
 void main() async {
-  // Set up the SettingsController, which will glue user settings to multiple
-  // Flutter Widgets.
-  final settingsController = SettingsController(SettingsService());
+  WidgetsFlutterBinding.ensureInitialized();
 
-  // Load the user's preferred theme while the splash screen is displayed.
-  // This prevents a sudden theme change when the app is first displayed.
-  await settingsController.loadSettings();
+  // Khởi tạo Hive
+  await Hive.initFlutter();
 
-  // Run the app and pass in the SettingsController. The app listens to the
-  // SettingsController for changes, then passes it further down to the
-  // SettingsView.
-  runApp(MyApp(settingsController: settingsController));
+  // Khởi tạo SettingsBloc
+  final settingsBloc = SettingsBloc();
+  await settingsBloc.init();
+
+  runApp(MyApp(settingsBloc: settingsBloc));
+}
+
+class MyApp extends StatelessWidget {
+  final SettingsBloc settingsBloc;
+
+  const MyApp({super.key, required this.settingsBloc});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider.value(
+      value: settingsBloc,
+      child: BlocBuilder<SettingsBloc, SettingsState>(
+        builder: (context, state) {
+          // Hiển thị loading nếu đang load settings
+          if (state.isLoading) {
+            return const MaterialApp(
+              debugShowCheckedModeBanner: false,
+              home: Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            );
+          }
+
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+
+            // Routing
+            initialRoute: '/home',
+            onGenerateRoute: AppRoutes.generateRoute,
+            restorationScopeId: 'app',
+
+            // Localization
+            locale: state.locale,
+
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+
+            onGenerateTitle: (BuildContext context) =>
+                AppLocalizations.of(context)!.appTitle,
+
+            // Theme - Áp dụng từ SettingsBloc
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: state.themeMode,
+          );
+        },
+      ),
+    );
+  }
 }

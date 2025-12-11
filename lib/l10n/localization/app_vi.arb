@@ -1,0 +1,58 @@
+{
+  "@@locale": "vi",
+  
+  "appTitle": "SnapGo",
+  "@appTitle": {
+    "description": "Tên ứng dụng"
+  },
+  
+  "lightMode": "Sáng",
+  "@lightMode": {
+    "description": "Chế độ giao diện sáng"
+  },
+  
+  "darkMode": "Tối",
+  "@darkMode": {
+    "description": "Chế độ giao diện tối"
+  },
+  
+  "systemMode": "Hệ thống",
+  "@systemMode": {
+    "description": "Theo cài đặt hệ thống"
+  },
+  
+  "themeSettings": "Cài đặt giao diện",
+  "@themeSettings": {
+    "description": "Tiêu đề phần cài đặt giao diện"
+  },
+  
+  "appearance": "Giao diện",
+  "@appearance": {
+    "description": "Tiêu đề phần cài đặt hình thức"
+  },
+
+  "language": "Ngôn ngữ",
+  "selectLanguage": "Chọn ngôn ngữ",
+  "interface": "Giao diện",
+  "chooseAppTheme": "Chọn giao diện ứng dụng",
+  "lightTheme": "Giao diện nền sáng",
+  "dark": "Tối",
+  "darkTheme": "Giao diện nền tối",
+  "systemTheme": "Giao diện hệ thống",
+  "autoTheme": "Tự động theo thiết bị",
+  "settings": "Cài đặt",
+  "resetSettings": "Đặt lại cài đặt",
+  "confirmResetSettings": "Bạn có chắc muốn đặt lại cài đặt không?",
+  "cancel": "Hủy",
+  "confirm": "Xác nhận", 
+  "preview": "Xem trước",
+  "sampleTitle": "Tiêu đề mẫu",
+  "sampleText": "Đây là văn bản mẫu để xem trước giao diện. Màu sắc và phông chữ sẽ thay đổi theo chủ đề bạn chọn.",
+  "primaryButton": "Nút chính",
+  "secondaryButton": "Nút phụ",
+  "toolbar": "Thanh công cụ",
+  "currentStatus": "Trạng thái hiện tại",
+  "enabled": "Bật",
+  "disabled": "Tắt",
+  "settingsManagedByBlocHive": "Cài đặt được quản lý bằng Bloc + Hive"
+}

@@ -1,0 +1,58 @@
+{
+  "@@locale": "ja",
+  
+  "appTitle": "SnapGo",
+  "@appTitle": {
+    "description": "アプリケーション名"
+  },
+  
+  "lightMode": "ライト",
+  "@lightMode": {
+    "description": "ライトテーマモード"
+  },
+  
+  "darkMode": "ダーク",
+  "@darkMode": {
+    "description": "ダークテーマモード"
+  },
+  
+  "systemMode": "システム",
+  "@systemMode": {
+    "description": "システム設定に従う"
+  },
+  
+  "themeSettings": "テーマ設定",
+  "@themeSettings": {
+    "description": "テーマ設定セクション"
+  },
+  
+  "appearance": "外観",
+  "@appearance": {
+    "description": "外観設定セクション"
+  },
+
+  "language": "言語",
+  "selectLanguage": "言語を選択",
+  "interface": "インターフェース",
+  "chooseAppTheme": "アプリのテーマを選択",
+  "lightTheme": "ライトテーマ",
+  "dark": "ダーク",
+  "darkTheme": "ダークテーマ",
+  "systemTheme": "システムテーマ",
+  "autoTheme": "自動テーマ",
+  "settings": "設定",
+  "resetSettings": "設定をリセット",
+  "confirmResetSettings": "設定をリセットしてもよろしいですか？",
+  "cancel": "キャンセル",
+  "confirm": "確認",
+  "preview": "プレビュー",
+  "sampleTitle": "サンプルタイトル",
+  "sampleText": "これはインターフェースをプレビューするためのサンプルテキストです。選択したテーマに応じて、色とフォントが変更されます。",
+  "primaryButton": "プライマリボタン",
+  "secondaryButton": "セカンダリボタン",
+  "toolbar": "ツールバー",
+  "currentStatus": "現在のステータス",
+  "enabled": "有効",
+  "disabled": "無効",
+  "settingsManagedByBlocHive": "Bloc + Hiveで管理されている設定"
+}

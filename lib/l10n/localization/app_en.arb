@@ -1,0 +1,58 @@
+{
+  "@@locale": "en",
+  
+  "appTitle": "SnapGo",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "lightMode": "Light Mode",
+  "@lightMode": {
+    "description": "Label for light theme mode"
+  },
+  
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Label for dark theme mode"
+  },
+  
+  "systemMode": "System",
+  "@systemMode": {
+    "description": "Label for system theme mode (follows device setting)"
+  },
+  
+  "themeSettings": "Theme Settings",
+  "@themeSettings": {
+    "description": "Title for theme configuration section"
+  },
+  
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Section header for appearance settings"
+  },
+
+  "language": "Language",
+  "selectLanguage": "Select language",
+  "interface": "Interface",
+  "chooseAppTheme": "Choose app theme",
+  "lightTheme": "Light Theme",
+  "dark": "Dark",
+  "darkTheme": "Dark Theme",
+  "systemTheme": "System Theme",
+  "autoTheme": "Auto Theme",
+  "settings": "Settings",
+  "resetSettings": "Reset Settings",
+  "confirmResetSettings": "Are you sure you want to reset settings?",
+  "cancel": "Cancel",
+  "confirm": "Confirm", 
+  "preview": "Preview",
+  "sampleTitle": "Sample Title",
+  "sampleText": "This is a sample text to preview the interface. Colors and fonts will change according to the theme you select.",
+  "primaryButton": "Primary Button",
+  "secondaryButton": "Secondary Button",
+  "toolbar": "Toolbar",
+  "currentStatus": "Current Status",
+  "enabled": "Enabled",
+  "disabled": "Disabled",
+  "settingsManagedByBlocHive": "Settings managed by Bloc + Hive"
+}
