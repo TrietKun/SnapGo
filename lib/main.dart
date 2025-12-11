@@ -30,39 +30,19 @@ class MyApp extends StatelessWidget {
       value: settingsBloc,
       child: BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, state) {
-          // Hiển thị loading nếu đang load settings
-          if (state.isLoading) {
-            return const MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-            );
-          }
-
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-
-            // Routing
-            initialRoute: '/home',
-            onGenerateRoute: AppRoutes.generateRoute,
-            restorationScopeId: 'app',
-
-            // Localization
             locale: state.locale,
-
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-
             onGenerateTitle: (BuildContext context) =>
                 AppLocalizations.of(context)!.appTitle,
-
-            // Theme - Áp dụng từ SettingsBloc
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: state.themeMode,
+            initialRoute: AppRoutes.splash,
+            onGenerateRoute: AppRoutes.generateRoute,
+            restorationScopeId: 'app',
           );
         },
       ),

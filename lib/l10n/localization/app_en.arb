@@ -54,5 +54,19 @@
   "currentStatus": "Current Status",
   "enabled": "Enabled",
   "disabled": "Disabled",
-  "settingsManagedByBlocHive": "Settings managed by Bloc + Hive"
+  "settingsManagedByBlocHive": "Settings managed by Bloc + Hive",
+  "skip": "Skip",
+  "next": "Next",
+  "getStarted": "Get Started",
+  
+  "onboardingTitle1": "Welcome to SnapGo",
+  "onboardingDesc1": "Discover and explore the most beautiful photo spots in Ho Chi Minh City",
+  
+  "onboardingTitle2": "Beautiful Photo Locations",
+  "onboardingDesc2": "We recommend stunning photography locations throughout Ho Chi Minh City for your perfect shots",
+  
+  "onboardingTitle3": "Share Your Discoveries",
+  "onboardingDesc3": "Help grow our community by contributing more amazing photo spots you've discovered",
+
+  "restartOnboarding": "Restart Onboarding"
 }

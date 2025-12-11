@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snapgo/screens/settings_screen.dart';
+import 'package:snapgo/screens/onboarding_screen.dart'; // Thêm import
 import '../screens/splash_screen.dart';
 import '../screens/home_screen.dart';
 
@@ -8,6 +9,7 @@ class AppRoutes {
   // Route names
   // ---------------------------
   static const String splash = '/splash';
+  static const String onboarding = '/onboarding'; // Thêm dòng này
   static const String home = '/home';
   static const String settings = '/settings';
 
@@ -22,6 +24,12 @@ class AppRoutes {
           const SplashScreen(),
         );
 
+      case onboarding: // Thêm case này
+        return _animatedRoute(
+          routeSettings,
+          const OnboardingScreen(),
+        );
+
       case home:
         return _animatedRoute(
           routeSettings,
@@ -29,7 +37,6 @@ class AppRoutes {
         );
 
       case settings:
-        // Placeholder for SettingsScreen
         return _animatedRoute(
           routeSettings,
           const SettingsScreen(),
@@ -61,7 +68,7 @@ class AppRoutes {
           opacity: animation,
           child: SlideTransition(
             position: Tween<Offset>(
-              begin: const Offset(0, 0.05), // hơi đẩy lên nhẹ
+              begin: const Offset(0, 0.05),
               end: Offset.zero,
             ).animate(
               CurvedAnimation(

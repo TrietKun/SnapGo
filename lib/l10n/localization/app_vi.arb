@@ -54,5 +54,19 @@
   "currentStatus": "Trạng thái hiện tại",
   "enabled": "Bật",
   "disabled": "Tắt",
-  "settingsManagedByBlocHive": "Cài đặt được quản lý bằng Bloc + Hive"
+  "settingsManagedByBlocHive": "Cài đặt được quản lý bằng Bloc + Hive",
+  "skip": "Bỏ qua",
+  "next": "Tiếp theo",
+  "getStarted": "Bắt đầu",
+  
+  "onboardingTitle1": "Chào mừng đến SnapGo",
+  "onboardingDesc1": "Khám phá những địa điểm chụp ảnh đẹp nhất tại Thành phố Hồ Chí Minh",
+  
+  "onboardingTitle2": "Địa Điểm Chụp Ảnh Đẹp",
+  "onboardingDesc2": "Chúng tôi gợi ý các địa điểm chụp ảnh tuyệt đẹp khắp TP.HCM cho những bức ảnh hoàn hảo của bạn",
+  
+  "onboardingTitle3": "Chia Sẻ Khám Phá",
+  "onboardingDesc3": "Hãy đóng góp thêm nhiều địa điểm chụp ảnh đẹp bạn đã khám phá để phát triển cộng đồng",
+
+  "restartOnboarding": "Bắt đầu lại hướng dẫn"
 }

@@ -54,5 +54,19 @@
   "currentStatus": "現在のステータス",
   "enabled": "有効",
   "disabled": "無効",
-  "settingsManagedByBlocHive": "Bloc + Hiveで管理されている設定"
+  "settingsManagedByBlocHive": "Bloc + Hiveで管理されている設定",
+  "skip": "スキップ",
+  "next": "次へ",
+  "getStarted": "始める",
+  
+  "onboardingTitle1": "SnapGoへようこそ",
+  "onboardingDesc1": "ホーチミン市で最も美しい撮影スポットを発見・探索",
+  
+  "onboardingTitle2": "美しい撮影場所",
+  "onboardingDesc2": "完璧な写真のために、ホーチミン市全体の素晴らしい撮影場所をお勧めします",
+  
+  "onboardingTitle3": "発見を共有",
+  "onboardingDesc3": "あなたが発見した素晴らしい撮影スポットを投稿して、コミュニティの成長を支援してください",
+
+  "restartOnboarding": "オンボーディングを再開する"
 }

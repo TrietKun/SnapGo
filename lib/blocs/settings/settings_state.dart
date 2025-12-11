@@ -4,11 +4,13 @@ class SettingsState {
   final ThemeMode themeMode;
   final String languageCode;
   final bool isLoading;
+  final bool isFirstLaunch;
 
   SettingsState({
     this.themeMode = ThemeMode.system,
     this.languageCode = 'en',
     this.isLoading = true,
+    this.isFirstLaunch = true,
   });
 
   bool get isDarkMode {
@@ -25,11 +27,13 @@ class SettingsState {
     ThemeMode? themeMode,
     String? languageCode,
     bool? isLoading,
+    bool? isFirstLaunch,
   }) {
     return SettingsState(
       themeMode: themeMode ?? this.themeMode,
       languageCode: languageCode ?? this.languageCode,
       isLoading: isLoading ?? this.isLoading,
+      isFirstLaunch: isFirstLaunch ?? this.isFirstLaunch,
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snapgo/blocs/settings/settings_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:snapgo/widgets/language_option_tile.dart';
+import 'package:snapgo/widgets/theme_option_tile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -80,7 +82,7 @@ class SettingsScreen extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       // Option: Light Theme
-                      _ThemeOptionTile(
+                      ThemeOptionTile(
                         title: l10n.lightMode,
                         subtitle: l10n.lightTheme,
                         icon: Icons.light_mode,
@@ -95,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
                       const SizedBox(height: 8),
 
                       // Option: Dark Theme
-                      _ThemeOptionTile(
+                      ThemeOptionTile(
                         title: l10n.darkMode,
                         subtitle: l10n.darkTheme,
                         icon: Icons.dark_mode,
@@ -110,7 +112,7 @@ class SettingsScreen extends StatelessWidget {
                       const SizedBox(height: 8),
 
                       // Option: System Theme
-                      _ThemeOptionTile(
+                      ThemeOptionTile(
                         title: l10n.systemMode,
                         subtitle: l10n.systemTheme,
                         icon: Icons.brightness_auto,
@@ -154,7 +156,7 @@ class SettingsScreen extends StatelessWidget {
                             ),
                       ),
                       const SizedBox(height: 16),
-                      _LanguageOptionTile(
+                      LanguageOptionTile(
                         title: 'English',
                         subtitle: 'English',
                         flag: '🇬🇧',
@@ -167,7 +169,7 @@ class SettingsScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 8),
-                      _LanguageOptionTile(
+                      LanguageOptionTile(
                         title: 'Tiếng Việt',
                         subtitle: 'Vietnamese',
                         flag: '🇻🇳',
@@ -180,7 +182,7 @@ class SettingsScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 8),
-                      _LanguageOptionTile(
+                      LanguageOptionTile(
                         title: '日本語',
                         subtitle: 'Japanese',
                         flag: '🇯🇵',
@@ -340,184 +342,19 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              //nút đi đến onboarding
+              const SizedBox(height: 32),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/onboarding');
+                  },
+                  child: Text(l10n.restartOnboarding),
+                ),
+              ),
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class _ThemeOptionTile extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _ThemeOptionTile({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? Theme.of(context).colorScheme.primary.withOpacity(0.15)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected
-                ? Theme.of(context).colorScheme.primary
-                : Colors.grey.withOpacity(0.3),
-            width: isSelected ? 2 : 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: isSelected
-                    ? Theme.of(context).colorScheme.primary.withOpacity(0.2)
-                    : Colors.grey.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                icon,
-                color: isSelected
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).textTheme.bodyLarge?.color,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.normal,
-                      color: isSelected
-                          ? Theme.of(context).colorScheme.primary
-                          : Theme.of(context).textTheme.bodyLarge?.color,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (isSelected)
-              Icon(
-                Icons.check_circle,
-                color: Theme.of(context).colorScheme.primary,
-                size: 24,
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _LanguageOptionTile extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String flag;
-  final String languageCode;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  const _LanguageOptionTile({
-    required this.title,
-    required this.subtitle,
-    required this.flag,
-    required this.languageCode,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? Theme.of(context).colorScheme.primary.withOpacity(0.15)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected
-                ? Theme.of(context).colorScheme.primary
-                : Colors.grey.withOpacity(0.3),
-            width: isSelected ? 2 : 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            Text(
-              flag,
-              style: const TextStyle(fontSize: 32),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight:
-                          isSelected ? FontWeight.w600 : FontWeight.normal,
-                      color: isSelected
-                          ? Theme.of(context).colorScheme.primary
-                          : Theme.of(context).textTheme.bodyLarge?.color,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (isSelected)
-              Icon(
-                Icons.check_circle,
-                color: Theme.of(context).colorScheme.primary,
-                size: 24,
-              ),
-          ],
-        ),
       ),
     );
   }

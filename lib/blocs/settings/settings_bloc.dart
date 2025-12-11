@@ -9,6 +9,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   static const String _boxName = 'settings';
   static const String _themeModeKey = 'themeMode';
   static const String _languageKey = 'language';
+  static const String _firstLaunchKey = 'isFirstLaunch';
 
   late Box _settingsBox;
 
@@ -16,6 +17,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     on<LoadSettings>(_onLoadSettings);
     on<ChangeThemeMode>(_onChangeThemeMode);
     on<ChangeLanguage>(_onChangeLanguage);
+    on<CompleteOnboarding>(_onCompleteOnboarding);
     on<ResetSettings>(_onResetSettings);
   }
 
@@ -45,9 +47,12 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
     final languageCode = _settingsBox.get(_languageKey, defaultValue: 'en');
 
+    final isFirstLaunch = _settingsBox.get(_firstLaunchKey, defaultValue: true);
+
     emit(state.copyWith(
       themeMode: themeMode,
       languageCode: languageCode,
+      isFirstLaunch: isFirstLaunch,
       isLoading: false,
     ));
   }
@@ -82,6 +87,14 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     await _settingsBox.put(_themeModeKey, themeModeString);
   }
 
+  Future<void> _onCompleteOnboarding(
+    CompleteOnboarding event,
+    Emitter<SettingsState> emit,
+  ) async {
+    emit(state.copyWith(isFirstLaunch: false));
+    await _settingsBox.put(_firstLaunchKey, false);
+  }
+
   Future<void> _onResetSettings(
     ResetSettings event,
     Emitter<SettingsState> emit,
@@ -90,6 +103,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     emit(state.copyWith(
       themeMode: ThemeMode.system,
       languageCode: 'en',
+      isFirstLaunch: true,
     ));
   }
 }

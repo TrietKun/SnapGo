@@ -15,3 +15,5 @@ class ChangeLanguage extends SettingsEvent {
 }
 
 class ResetSettings extends SettingsEvent {}
+
+class CompleteOnboarding extends SettingsEvent {}

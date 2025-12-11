@@ -30,6 +30,21 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _controller.forward();
+    _navigateAfterDelay();
+  }
+
+  Future<void> _navigateAfterDelay() async {
+    await Future.delayed(const Duration(seconds: 5));
+
+    if (!mounted) return;
+
+    final state = context.read<SettingsBloc>().state;
+
+    if (state.isFirstLaunch) {
+      Navigator.pushReplacementNamed(context, '/onboarding');
+    } else {
+      Navigator.pushReplacementNamed(context, '/home');
+    }
   }
 
   @override
