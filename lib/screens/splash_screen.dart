@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
     if (state.isFirstLaunch) {
       Navigator.pushReplacementNamed(context, '/onboarding');
     } else {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/main');
     }
   }
 
@@ -78,13 +78,29 @@ class _SplashScreenState extends State<SplashScreen>
                 alignment: Alignment.center,
                 child: FadeTransition(
                   opacity: _animation,
-                  child: Lottie.asset(
-                    'assets/lottie/splash.json',
+                  child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    fit: BoxFit.contain,
+                    height: MediaQuery.of(context).size.height *
+                        0.45, // <-- quan trọng
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child: Theme.of(context).brightness == Brightness.dark
+                          ? Image.asset(
+                              'assets/lottie/dark_splash.gif',
+                              key: const ValueKey('dark_gif'),
+                              gaplessPlayback: true,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              fit: BoxFit.contain,
+                            )
+                          : Lottie.asset(
+                              'assets/lottie/splash.json',
+                              key: const ValueKey('light_lottie'),
+                              fit: BoxFit.contain,
+                            ),
+                    ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         );

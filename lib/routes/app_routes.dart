@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:snapgo/screens/main_screen.dart';
+import 'package:snapgo/screens/profile_screen.dart';
 import 'package:snapgo/screens/settings_screen.dart';
 import 'package:snapgo/screens/onboarding_screen.dart'; // Thêm import
+import 'package:snapgo/screens/top_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/home_screen.dart';
 
@@ -12,6 +15,9 @@ class AppRoutes {
   static const String onboarding = '/onboarding'; // Thêm dòng này
   static const String home = '/home';
   static const String settings = '/settings';
+  static const String profile = '/profile';
+  static const String top = '/top';
+  static const String main = '/main';
 
   // ---------------------------
   // Main Router
@@ -33,13 +39,31 @@ class AppRoutes {
       case home:
         return _animatedRoute(
           routeSettings,
-          const HomeScreen(),
+          HomeScreen(),
         );
 
       case settings:
         return _animatedRoute(
           routeSettings,
           const SettingsScreen(),
+        );
+
+      case profile:
+        return _animatedRoute(
+          routeSettings,
+          const ProfileScreen(),
+        );
+
+      case top:
+        return _animatedRoute(
+          routeSettings,
+          const TopScreen(),
+        );
+
+      case main:
+        return _animatedRoute(
+          routeSettings,
+          const MainScreen(),
         );
 
       default:

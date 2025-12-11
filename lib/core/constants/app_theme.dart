@@ -9,7 +9,7 @@ class AppTheme {
     brightness: Brightness.light,
     useMaterial3: true,
     scaffoldBackgroundColor:
-        const Color(0xFFF8F9FA), // Màu nền sáng, tinh tế hơn
+        const Color(0xFFFFFFFF), // Màu nền sáng, tinh tế hơn
 
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF6C63FF), // Tím hiện đại
@@ -85,7 +85,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
-    scaffoldBackgroundColor: const Color(0xFF0F0F14),
+    scaffoldBackgroundColor: Colors.black,
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryBlue,
       secondary: AppColors.primarySoft,
