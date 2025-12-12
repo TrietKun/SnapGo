@@ -13,7 +13,6 @@ class MockData {
             'Công trình kiến trúc Gothic nổi tiếng, biểu tượng của Sài Gòn với hai tháp chuông cao vút. Nơi lý tưởng để check-in và tìm hiểu về lịch sử văn hóa.',
         imageUrls: [
           'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800',
-          'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800',
         ],
         latitude: 10.7797,
         longitude: 106.6991,
@@ -48,6 +47,7 @@ class MockData {
         imageUrls: [
           'https://images.unsplash.com/photo-1528127269322-539801943592?w=800',
           'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800',
+          'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800',
         ],
         latitude: 10.7723,
         longitude: 106.6981,

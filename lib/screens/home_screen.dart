@@ -54,6 +54,7 @@ class _HomeScreenViewState extends State<HomeScreenView>
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
@@ -65,7 +66,6 @@ class _HomeScreenViewState extends State<HomeScreenView>
           ),
         ),
         actions: [
-          //setting
           IconButton(
             icon: const Icon(Icons.settings, color: Colors.black54),
             onPressed: () {
