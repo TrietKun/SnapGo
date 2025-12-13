@@ -64,8 +64,79 @@ class SpotEntity {
     required this.isVerified,
   });
 
-  factory SpotEntity.fromJson(Map<String, dynamic> json) =>
-      _$SpotEntityFromJson(json);
+  // ✅ Custom fromJson với locale support
+  factory SpotEntity.fromJson(Map<String, dynamic> json, {String? locale}) {
+    final currentLocale = locale ?? 'en';
+
+    return SpotEntity(
+      id: json['id'] as String,
+
+      // ✅ Extract localized strings
+      name: _extractLocalized(json['name'], currentLocale),
+      description: _extractLocalized(json['description'], currentLocale),
+      address: _extractLocalized(json['address'], currentLocale),
+
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
+
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
+      district: json['district'] as String,
+      city: json['city'] as String,
+
+      // ✅ Extract localized lists
+      categories: _extractLocalizedList(json['categories'], currentLocale),
+      tags: _extractLocalizedList(json['tags'], currentLocale),
+
+      bestTime: BestTimeInfo.fromJson(
+        json['bestTime'] as Map<String, dynamic>,
+      ),
+
+      ratingAverage: (json['ratingAverage'] as num).toDouble(),
+      ratingCount: json['ratingCount'] as int,
+
+      ratingBreakdown: (json['ratingBreakdown'] as Map<String, dynamic>?)
+              ?.map((k, v) => MapEntry(int.parse(k), v as int)) ??
+          {},
+
+      checkInCount: json['checkInCount'] as int,
+      views: json['views'] as int,
+      favorites: json['favorites'] as int,
+      shares: json['shares'] as int,
+      trendingScore: json['trendingScore'] as int,
+
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdBy: json['createdBy'] as String,
+      isVerified: json['isVerified'] as bool,
+    );
+  }
+
+  // ✅ Helper method to extract localized string
+  static String _extractLocalized(dynamic value, String locale) {
+    if (value is String) {
+      return value;
+    } else if (value is Map) {
+      return value[locale]?.toString() ??
+          value['vi']?.toString() ??
+          value['en']?.toString() ??
+          '';
+    }
+    return '';
+  }
+
+  // ✅ Helper method to extract localized list
+  static List<String> _extractLocalizedList(dynamic value, String locale) {
+    if (value is List) {
+      return value.map((e) => e.toString()).toList();
+    } else if (value is Map) {
+      final list = value[locale] ?? value['vi'] ?? value['en'] ?? [];
+      return (list as List).map((e) => e.toString()).toList();
+    }
+    return [];
+  }
 
   Map<String, dynamic> toJson() => _$SpotEntityToJson(this);
 

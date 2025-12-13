@@ -46,12 +46,21 @@ class _HomeScreenViewState extends State<HomeScreenView>
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         final tab = _tabs[_tabController.index];
-        context.read<HomeBloc>().add(LoadSpotsEvent(tab));
+        // ✅ Lấy locale và pass vào event
+        final locale = Localizations.localeOf(context).languageCode;
+        context.read<HomeBloc>().add(LoadSpotsEvent(tab, locale));
       }
     });
+  }
 
-    // Load data lần đầu
-    context.read<HomeBloc>().add(LoadSpotsEvent(_tabs[0]));
+  // ✅ Load data lần đầu trong didChangeDependencies
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // Load data lần đầu với locale
+    final locale = Localizations.localeOf(context).languageCode;
+    context.read<HomeBloc>().add(LoadSpotsEvent(_tabs[0], locale));
   }
 
   // ✅ Nhận tab parameter để biết scroll của tab nào
@@ -66,7 +75,9 @@ class _HomeScreenViewState extends State<HomeScreenView>
     // Chỉ trigger khi đang ở tab đúng
     if (currentScroll >= (maxScroll * 0.9) &&
         _tabs[_tabController.index] == tab) {
-      context.read<HomeBloc>().add(LoadMoreSpotsEvent(tab));
+      // ✅ Lấy locale và pass vào event
+      final locale = Localizations.localeOf(context).languageCode;
+      context.read<HomeBloc>().add(LoadMoreSpotsEvent(tab, locale));
     }
   }
 
@@ -83,6 +94,8 @@ class _HomeScreenViewState extends State<HomeScreenView>
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).languageCode; // ✅ Lấy locale
+
     final List<String> tabLabels = [
       l10n.trending,
       l10n.bySeason,
@@ -173,9 +186,11 @@ class _HomeScreenViewState extends State<HomeScreenView>
                     const SizedBox(height: 32),
                     ElevatedButton.icon(
                       onPressed: () {
-                        context
-                            .read<HomeBloc>()
-                            .add(LoadSpotsEvent(_tabs[_tabController.index]));
+                        // ✅ Pass locale vào event
+                        context.read<HomeBloc>().add(
+                              LoadSpotsEvent(
+                                  _tabs[_tabController.index], locale),
+                            );
                       },
                       icon: const Icon(Icons.refresh),
                       label: const Text('Try Again'),
@@ -209,10 +224,12 @@ class _HomeScreenViewState extends State<HomeScreenView>
 
             return RefreshIndicator(
               onRefresh: () async {
-                context.read<HomeBloc>().add(RefreshSpotsEvent(currentTab));
+                // ✅ Pass locale vào event
+                context.read<HomeBloc>().add(
+                      RefreshSpotsEvent(currentTab, locale),
+                    );
               },
               child: ListView.builder(
-                // key: ValueKey(currentTab),
                 // ✅ Dùng ScrollController của tab hiện tại
                 controller: _scrollControllers[currentTab],
                 padding: const EdgeInsets.symmetric(vertical: 8),

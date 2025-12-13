@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // ← Add this
 import 'package:snapgo/blocs/home/home_bloc.dart';
-import 'package:snapgo/blocs/home/home_event.dart';
 import 'package:snapgo/repositories/spot_repository.dart/spot_repository.dart';
 import 'package:snapgo/screens/profile_screen.dart';
 import 'package:snapgo/screens/top_screen.dart';
@@ -15,13 +14,11 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Truyền FirebaseFirestore.instance trực tiếp
     final spotRepository =
         SpotRepository(SpotService(FirebaseFirestore.instance));
 
     return BlocProvider(
-      create: (context) =>
-          HomeBloc(spotRepository)..add(LoadSpotsEvent('trending')),
+      create: (context) => HomeBloc(spotRepository),
       child: const _MainScreenView(),
     );
   }

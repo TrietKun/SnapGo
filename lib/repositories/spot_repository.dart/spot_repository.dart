@@ -10,6 +10,7 @@ class SpotRepository {
     String tab, {
     required int page,
     required int pageSize,
+    String? locale,
   }) async {
     final snapshot = tab == 'trending'
         ? await _service.getTrending(page: page, limit: pageSize)
@@ -20,7 +21,7 @@ class SpotRepository {
       return SpotEntity.fromJson({
         'id': doc.id,
         ...data,
-      });
+      }, locale: locale);
     }).toList();
 
     return spots;
@@ -29,7 +30,7 @@ class SpotRepository {
   Future<List<SpotEntity>> refresh(
     String tab, {
     required int page,
-    required int pageSize,
+    required int pageSize, required String locale,
   }) async {
     return getSpots(tab, page: page, pageSize: pageSize);
   }
