@@ -74,7 +74,7 @@ class SpotCardHeader extends StatelessWidget {
                         child: const Icon(
                           Icons.check,
                           size: 12,
-                          color: Colors.green,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -95,12 +95,23 @@ class SpotCardHeader extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.grey.shade100,
+              color: Theme.of(context)
+                  .elevatedButtonTheme
+                  .style
+                  ?.backgroundColor
+                  ?.resolve({}),
               borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.5),
+                  blurRadius: 10,
+                  offset: const Offset(2, 2),
+                ),
+              ],
             ),
             child: Icon(
               Icons.more_horiz_rounded,
-              color: Colors.grey.shade600,
+              color: Theme.of(context).primaryIconTheme.color,
               size: 20,
             ),
           ),

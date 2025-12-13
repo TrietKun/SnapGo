@@ -5,6 +5,11 @@ class LoadSpotsEvent extends HomeEvent {
   LoadSpotsEvent(this.tab);
 }
 
+class LoadMoreSpotsEvent extends HomeEvent {
+  final String tab;
+  LoadMoreSpotsEvent(this.tab);
+}
+
 class RefreshSpotsEvent extends HomeEvent {
   final String tab;
   RefreshSpotsEvent(this.tab);

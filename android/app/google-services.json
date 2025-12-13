@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "9661354500",
+    "project_id": "snapgo-4767a",
+    "storage_bucket": "snapgo-4767a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9661354500:android:3123fccfc16f09c8175b51",
+        "android_client_info": {
+          "package_name": "com.snapgo.android.trietkun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHbrzC7KGWfi9be7nJHsMRigiTSr4yoTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

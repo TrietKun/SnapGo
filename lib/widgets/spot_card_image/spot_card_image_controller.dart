@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snapgo/screens/image_viewer_screen.dart';
 
 class SpotCardImageController {
   final TickerProvider vsync;
@@ -21,7 +22,8 @@ class SpotCardImageController {
     required this.images,
   }) {
     // Loop 3 sections
-    loopImages = images.length <= 1 ? images : [...images, ...images, ...images];
+    loopImages =
+        images.length <= 1 ? images : [...images, ...images, ...images];
 
     pageController = PageController();
     thumbController = ScrollController();
@@ -115,6 +117,29 @@ class SpotCardImageController {
         curve: Curves.easeOutCubic,
       );
     }
+  }
+
+  void showFullscreenImageViewer(
+    BuildContext context, {
+    required List<String> imageUrls,
+    int initialIndex = 0,
+  }) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        barrierColor: Colors.black,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return FadeTransition(
+            opacity: animation,
+            child: ImageViewerScreen(
+              imageUrls: imageUrls,
+              initialIndex: initialIndex,
+            ),
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      ),
+    );
   }
 
   // =====================================================

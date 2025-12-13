@@ -68,5 +68,12 @@
   "onboardingTitle3": "Share Your Discoveries",
   "onboardingDesc3": "Help grow our community by contributing more amazing photo spots you've discovered",
 
-  "restartOnboarding": "Restart Onboarding"
+  "restartOnboarding": "Restart Onboarding",
+  "exploreSaigon": "Explore Saigon",
+  "trending": "Trending",
+  "bySeason": "By Season",
+  "pullToRefresh": "Pull down to refresh",
+  "explore": "Explore",
+  "top": "Top",
+  "profile": "Profile"
 }

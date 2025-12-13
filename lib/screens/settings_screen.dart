@@ -32,7 +32,9 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        context.read<SettingsBloc>().add(ResetSettings());
+                        context.read<SettingsBloc>().add(
+                              ResetSettings(),
+                            );
                         Navigator.pop(dialogContext);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text(l10n.resetSettings)),

@@ -68,5 +68,12 @@
   "onboardingTitle3": "発見を共有",
   "onboardingDesc3": "あなたが発見した素晴らしい撮影スポットを投稿して、コミュニティの成長を支援してください",
 
-  "restartOnboarding": "オンボーディングを再開する"
+  "restartOnboarding": "オンボーディングを再開する",
+  "exploreSaigon": "ホーチミン市を探索する",
+  "trending": "トレンド",
+  "bySeason": "シーズン別",
+  "pullToRefresh": "引っ張って更新",
+  "explore": "探索",
+  "top": "トップ",
+  "profile": "プロフィール"
 }

@@ -6,11 +6,26 @@ class HomeInitial extends HomeState {}
 
 class HomeLoading extends HomeState {}
 
-class HomeLoaded extends HomeState {
+class HomeLoadingMore extends HomeState {
   final List<SpotEntity> spots;
   final String currentTab;
   
-  HomeLoaded(this.spots, this.currentTab);
+  HomeLoadingMore({
+    required this.spots,
+    required this.currentTab,
+  });
+}
+
+class HomeLoaded extends HomeState {
+  final List<SpotEntity> spots;
+  final String currentTab;
+  final bool hasReachedMax;
+  
+  HomeLoaded({
+    required this.spots,
+    required this.currentTab,
+    required this.hasReachedMax,
+  });
 }
 
 class HomeError extends HomeState {

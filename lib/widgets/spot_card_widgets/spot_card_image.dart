@@ -72,7 +72,34 @@ class _SpotCardImageState extends State<SpotCardImage>
               },
             );
           },
-        )
+        ),
+        //nút xem hình full
+        Positioned(
+          bottom: 8,
+          right: 8,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              onPressed: () {
+                controller.showFullscreenImageViewer(
+                  context,
+                  imageUrls: widget.spot.imageUrls,
+                  initialIndex:
+                      controller.currentPage.value, // Bắt đầu từ ảnh đang xem
+                );
+              },
+              icon: const Icon(
+                Icons.fullscreen,
+                color: Colors.white,
+                size: 32,
+              ),
+              tooltip: 'Xem hình full',
+            ),
+          ),
+        ),
       ],
     );
   }

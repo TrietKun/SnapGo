@@ -50,20 +50,20 @@ class _SpotCardState extends State<SpotCard>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.white,
+              Theme.of(context).colorScheme.surface,
               Colors.grey.shade50,
             ],
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 20,
-              offset: const Offset(0, 8),
-            ),
-            BoxShadow(
-              color: Colors.blue.withOpacity(0.05),
-              blurRadius: 40,
-              offset: const Offset(0, 16),
+              color: Theme.of(context)
+                      .elevatedButtonTheme
+                      .style
+                      ?.backgroundColor
+                      ?.resolve({}) ??
+                  Colors.black.withOpacity(0.08),
+              blurRadius: 15,
+              offset: const Offset(0, 0),
             ),
           ],
         ),

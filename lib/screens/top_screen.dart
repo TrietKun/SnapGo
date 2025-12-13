@@ -23,6 +23,7 @@ class _TopScreenState extends State<TopScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("Top địa điểm"),
         bottom: TabBar(
           controller: _controller,
