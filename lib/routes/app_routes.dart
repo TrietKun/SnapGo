@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:snapgo/screens/login_screen.dart';
 import 'package:snapgo/screens/main_screen.dart';
 import 'package:snapgo/screens/profile_screen.dart';
 import 'package:snapgo/screens/settings_screen.dart';
 import 'package:snapgo/screens/onboarding_screen.dart'; // Thêm import
+import 'package:snapgo/screens/signup_screen.dart';
 import 'package:snapgo/screens/top_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/home_screen.dart';
@@ -18,6 +20,8 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String top = '/top';
   static const String main = '/main';
+  static const String login = '/login';
+  static const String signup = '/signup';
 
   // ---------------------------
   // Main Router
@@ -64,6 +68,18 @@ class AppRoutes {
         return _animatedRoute(
           routeSettings,
           const MainScreen(),
+        );
+
+      case login:
+        return _animatedRoute(
+          routeSettings,
+          const LoginScreen(),
+        );
+
+      case signup:
+        return _animatedRoute(
+          routeSettings,
+          const SignUpScreen(),
         );
 
       default:

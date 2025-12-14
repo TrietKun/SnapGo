@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snapgo/blocs/home/home_event.dart';
 import 'package:snapgo/blocs/home/home_state.dart';
 import 'package:snapgo/models/spot_entity.dart';
-import 'package:snapgo/repositories/spot_repository.dart/spot_repository.dart';
+import 'package:snapgo/repositories/spot_repositories/spot_repository.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final SpotRepository repository;

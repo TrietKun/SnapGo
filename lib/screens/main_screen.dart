@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // ← Add this
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:snapgo/blocs/auth/auth_bloc.dart';
+import 'package:snapgo/blocs/auth/auth_event.dart';
 import 'package:snapgo/blocs/home/home_bloc.dart';
-import 'package:snapgo/repositories/spot_repository.dart/spot_repository.dart';
+import 'package:snapgo/repositories/auth_repositories/firebase_auth_repository.dart';
+import 'package:snapgo/repositories/auth_repositories/user_repository.dart';
+import 'package:snapgo/repositories/spot_repositories/spot_repository.dart';
 import 'package:snapgo/screens/profile_screen.dart';
 import 'package:snapgo/screens/top_screen.dart';
 import 'package:snapgo/services/spot/spot_service.dart';
@@ -14,12 +18,35 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Tạo repositories
     final spotRepository =
         SpotRepository(SpotService(FirebaseFirestore.instance));
+    final authRepository = FirebaseAuthRepository();
+    final userRepository = FirebaseUserRepository();
 
-    return BlocProvider(
-      create: (context) => HomeBloc(spotRepository),
-      child: const _MainScreenView(),
+    return MultiRepositoryProvider(
+      providers: [
+        // Provide repositories trước
+        RepositoryProvider<FirebaseAuthRepository>.value(value: authRepository),
+        RepositoryProvider<FirebaseUserRepository>.value(value: userRepository),
+        RepositoryProvider<SpotRepository>.value(value: spotRepository),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => HomeBloc(
+              context.read<SpotRepository>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => AuthBloc(
+              authRepository: context.read<FirebaseAuthRepository>(),
+              userRepository: context.read<FirebaseUserRepository>(),
+            )..add(const AuthStarted()),
+          ),
+        ],
+        child: const _MainScreenView(),
+      ),
     );
   }
 }

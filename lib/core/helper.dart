@@ -22,4 +22,8 @@ class Helper {
     }
     return number.toString();
   }
+
+  String formatDate(DateTime dateTime) {
+    return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+  }
 }
