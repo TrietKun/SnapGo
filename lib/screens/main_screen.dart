@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:snapgo/blocs/auth/auth_bloc.dart';
 import 'package:snapgo/blocs/auth/auth_event.dart';
 import 'package:snapgo/blocs/home/home_bloc.dart';
 import 'package:snapgo/repositories/auth_repositories/firebase_auth_repository.dart';
 import 'package:snapgo/repositories/auth_repositories/user_repository.dart';
 import 'package:snapgo/repositories/spot_repositories/spot_repository.dart';
+import 'package:snapgo/repositories/user_repositories.dart/FirebaseProfileRepository.dart';
+import 'package:snapgo/repositories/user_repositories.dart/profile_repository.dart';
 import 'package:snapgo/screens/profile_screen.dart';
 import 'package:snapgo/screens/top_screen.dart';
 import 'package:snapgo/services/spot/spot_service.dart';
@@ -24,12 +28,21 @@ class MainScreen extends StatelessWidget {
     final authRepository = FirebaseAuthRepository();
     final userRepository = FirebaseUserRepository();
 
+    // Tạo ProfileRepository với Firebase instances
+    final profileRepository = FirebaseProfileRepository(
+      firestore: FirebaseFirestore.instance,
+      auth: FirebaseAuth.instance,
+      storage: FirebaseStorage.instance,
+    );
+
     return MultiRepositoryProvider(
       providers: [
         // Provide repositories trước
         RepositoryProvider<FirebaseAuthRepository>.value(value: authRepository),
         RepositoryProvider<FirebaseUserRepository>.value(value: userRepository),
         RepositoryProvider<SpotRepository>.value(value: spotRepository),
+        // Provide ProfileRepository với type abstract class
+        RepositoryProvider<ProfileRepository>.value(value: profileRepository),
       ],
       child: MultiBlocProvider(
         providers: [

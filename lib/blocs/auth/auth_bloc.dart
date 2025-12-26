@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snapgo/blocs/auth/auth_event.dart';
 import 'package:snapgo/blocs/auth/auth_state.dart';
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 import 'package:snapgo/repositories/auth_repositories/auth_repository.dart';
 import 'package:snapgo/repositories/auth_repositories/firebase_auth_repository.dart';
 

@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 
 abstract class AuthEvent extends Equatable {
   const AuthEvent();

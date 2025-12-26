@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 import 'package:snapgo/widgets/profile_widgets/profile_avatar.dart';
 
 class ProfileHeader extends StatefulWidget {

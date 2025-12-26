@@ -1,4 +1,4 @@
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 
 abstract class AuthRepository {
   /// Get currently authenticated user

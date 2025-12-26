@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({

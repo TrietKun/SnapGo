@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snapgo/screens/edit_profile_screen.dart';
 import 'package:snapgo/screens/login_screen.dart';
 import 'package:snapgo/screens/main_screen.dart';
 import 'package:snapgo/screens/profile_screen.dart';
@@ -22,6 +23,7 @@ class AppRoutes {
   static const String main = '/main';
   static const String login = '/login';
   static const String signup = '/signup';
+  static const String editProfile = '/editProfile';
 
   // ---------------------------
   // Main Router
@@ -80,6 +82,12 @@ class AppRoutes {
         return _animatedRoute(
           routeSettings,
           const SignUpScreen(),
+        );
+
+      case editProfile:
+        return _animatedRoute(
+          routeSettings,
+          const EditProfileScreen(),
         );
 
       default:

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 /// Immutable user entity with proper value semantics
@@ -65,6 +66,35 @@ class UserEntity extends Equatable {
       createdAt: createdAt ?? this.createdAt,
       lastActiveAt: lastActiveAt ?? this.lastActiveAt,
       badges: badges ?? this.badges,
+    );
+  }
+
+  // Create a UserEntity from JSON
+  factory UserEntity.fromJson(Map<String, dynamic> json) {
+    return UserEntity(
+      id: json['id'] as String,
+      email: json['email'] as String,
+      displayName: json['displayName'] as String?,
+      avatarUrl: json['avatarUrl'] as String?,
+      bio: json['bio'] as String?,
+      role: UserRole.values.firstWhere(
+          (e) => e.toString() == 'UserRole.${json['role'] as String}',
+          orElse: () => UserRole.user),
+      stats: UserStats(
+        followers: json['stats']?['followers'] as int? ?? 0,
+        following: json['stats']?['following'] as int? ?? 0,
+        posts: json['stats']?['posts'] as int? ?? 0,
+        spotsVisited: json['stats']?['spotsVisited'] as int? ?? 0,
+        photosShared: json['stats']?['photosShared'] as int? ?? 0,
+      ),
+      createdAt: (json['createdAt'] as Timestamp).toDate(),
+      lastActiveAt: json['lastActiveAt'] != null
+          ? (json['lastActiveAt'] as Timestamp).toDate()
+          : null,
+      badges: (json['badges'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
   }
 

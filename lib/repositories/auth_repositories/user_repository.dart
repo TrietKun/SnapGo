@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:snapgo/models/app_user.dart';
+import 'package:snapgo/models/user_entity.dart';
 import 'package:snapgo/repositories/auth_repositories/auth_repository.dart';
 
 class FirebaseUserRepository implements UserRepository {
